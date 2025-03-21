@@ -1,0 +1,10 @@
+spring.application.name=TodoWebApp
+spring.jpa.show-sql=true
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/TodoWebApp
+spring.datasource.password=3598
+spring.datasource.name=postgres
+spring.jpa.hibernate.ddl-auto=create-drop
+
+jwt.token.secret=5M9yTnLqVzP2F1ZgTn5wQoXvM8n7J9bWbY3XKpH6ZsQ=
+jwt.token.lifetime=60000
