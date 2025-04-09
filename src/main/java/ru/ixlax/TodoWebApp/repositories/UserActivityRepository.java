@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.ixlax.TodoWebApp.models.user.UserActivity;
 
 @Repository
-public interface UserActivityRepository extends JpaRepository<UserActivity,Integer> {
+public interface UserActivityRepository extends JpaRepository<UserActivity,Long> {
 }

@@ -1,4 +1,4 @@
-package ru.ixlax.TodoWebApp.dto;
+package ru.ixlax.TodoWebApp.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamSizeRequest {
-    private Integer id;
+public class TeamSizeResponse {
+    private Long id;
     private String size;
 }

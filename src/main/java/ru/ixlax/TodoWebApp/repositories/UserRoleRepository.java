@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.ixlax.TodoWebApp.models.user.UserRole;
 
 @Repository
-public interface UserRoleRepository extends JpaRepository<UserRole,Integer> {
+public interface UserRoleRepository extends JpaRepository<UserRole,Long> {
 }

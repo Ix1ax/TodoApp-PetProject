@@ -1,4 +1,4 @@
-package ru.ixlax.TodoWebApp.dto;
+package ru.ixlax.TodoWebApp.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,15 +11,15 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class UserResponse {
 
     private Long id;
     private String name;
     private String phoneNumber;
     private Integer age;
-    private Integer teamSize;
-    private List<Integer> userActivities;
-    private Integer userRole;
+    private Long teamSize;
+    private List<Long> userActivities;
+    private Long userRole;
     private String registerAt;
     private String email;
     private String role;

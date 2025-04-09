@@ -1,4 +1,4 @@
-package ru.ixlax.TodoWebApp.dto;
+package ru.ixlax.TodoWebApp.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserActivityRequest {
+public class UserRoleResponse {
 
-    private Integer id;
-    private String userActivity;
-
-
+    private Long id;
+    private String userRole;
 
 }

@@ -18,12 +18,12 @@ public class UserActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "user_activity")
     private String userActivity;
 
-    @ManyToMany(mappedBy = "userActivities", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "userActivities", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private List<User> users;
 
 }

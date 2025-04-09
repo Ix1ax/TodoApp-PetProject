@@ -19,12 +19,12 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "user_role")
     private String userRole;
 
-    @OneToMany(mappedBy = "userRole", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<User> users;
 
 

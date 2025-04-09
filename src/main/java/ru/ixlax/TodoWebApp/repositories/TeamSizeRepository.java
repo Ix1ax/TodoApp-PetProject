@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.ixlax.TodoWebApp.models.user.TeamSize;
 
 @Repository
-public interface TeamSizeRepository extends JpaRepository<TeamSize,Integer> {
+public interface TeamSizeRepository extends JpaRepository<TeamSize,Long> {
 
 }

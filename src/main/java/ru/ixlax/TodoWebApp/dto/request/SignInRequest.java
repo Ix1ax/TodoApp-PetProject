@@ -1,4 +1,4 @@
-package ru.ixlax.TodoWebApp.dto;
+package ru.ixlax.TodoWebApp.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

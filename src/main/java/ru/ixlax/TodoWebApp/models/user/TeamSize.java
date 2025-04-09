@@ -16,12 +16,12 @@ public class TeamSize {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "size")
     private String size;
 
-    @OneToMany(mappedBy = "teamSize", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "teamSize", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private List<User> users;
 
 }

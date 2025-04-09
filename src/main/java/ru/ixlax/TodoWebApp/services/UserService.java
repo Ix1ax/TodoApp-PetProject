@@ -10,10 +10,11 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.ixlax.TodoWebApp.dto.SignInRequest;
-import ru.ixlax.TodoWebApp.dto.SignUpRequest;
+import ru.ixlax.TodoWebApp.dto.request.SignInRequest;
+import ru.ixlax.TodoWebApp.dto.request.SignUpRequest;
 import ru.ixlax.TodoWebApp.models.user.*;
 import ru.ixlax.TodoWebApp.repositories.UserRepository;
 import ru.ixlax.TodoWebApp.security.JwtCore;
@@ -36,6 +37,13 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtCore jwtCore;
+
+    public User getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(
+                        String.format("Email '%s' not found", email)
+                ));
+    }
 
     public boolean isEmailAlreadyExists(String email) {
         return userRepository.existsUserByEmail(email);

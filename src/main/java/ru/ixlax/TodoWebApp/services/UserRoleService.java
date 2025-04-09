@@ -2,7 +2,8 @@ package ru.ixlax.TodoWebApp.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.ixlax.TodoWebApp.dto.UserRoleRequest;
+import ru.ixlax.TodoWebApp.dto.response.UserRoleResponse;
+import ru.ixlax.TodoWebApp.mappers.UserRoleMapper;
 import ru.ixlax.TodoWebApp.models.user.UserRole;
 import ru.ixlax.TodoWebApp.repositories.UserRoleRepository;
 
@@ -14,25 +15,26 @@ import java.util.List;
 public class UserRoleService {
 
     private final UserRoleRepository userRoleRepository;
+    private final UserRoleMapper userRoleMapper;
 
-    public List<UserRoleRequest> getAllUserRoles() {
+    public List<UserRoleResponse> getAllUserRoles() {
         List<UserRole> userRoles = userRoleRepository.findAll();
 
         return mapToDtoList(userRoles);
     }
 
-    private List<UserRoleRequest> mapToDtoList(List<UserRole> userRoles) {
+    private List<UserRoleResponse> mapToDtoList(List<UserRole> userRoles) {
         if(userRoles.isEmpty()) {
             return new ArrayList<>();
         }
 
         return userRoles.stream()
-                .map(userRole -> new UserRoleRequest(userRole.getId(),userRole.getUserRole()))
+                .map(userRoleMapper::toUserRoleDTO)
                 .toList();
 
     }
 
-    public UserRole getUserRoleById(Integer id) {
+    public UserRole getUserRoleById(Long id) {
         return userRoleRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid UserRole ID: " + id));
     }

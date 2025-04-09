@@ -1,4 +1,4 @@
-package ru.ixlax.TodoWebApp.dto;
+package ru.ixlax.TodoWebApp.dto.request;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -24,11 +24,11 @@ public class SignUpRequest {
     @Max(value = 100,message = "Максимальный возраст 100")
     private Integer age;
     @NotNull(message = "Поле Количество Людей В Команде должно быть заполнено")
-    private Integer teamSize;
+    private Long teamSize;
     @NotNull(message = "Пол Активности должно быть заполнено")
-    private List<Integer> userActivities;
+    private List<Long> userActivities;
     @NotNull(message = "Поле Роль Пользователя должно быть заполнено")
-    private Integer userRole;
+    private Long userRole;
     @NotBlank(message = "Поле Email должно быть заполнено")
     @Email(message = "Поле Email должно иметь формат адреса электронной почты")
     private String email;

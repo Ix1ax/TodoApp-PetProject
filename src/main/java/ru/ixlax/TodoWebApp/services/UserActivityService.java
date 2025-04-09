@@ -2,7 +2,8 @@ package ru.ixlax.TodoWebApp.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.ixlax.TodoWebApp.dto.UserActivityRequest;
+import ru.ixlax.TodoWebApp.dto.response.UserActivityResponse;
+import ru.ixlax.TodoWebApp.mappers.UserActivityMapper;
 import ru.ixlax.TodoWebApp.models.user.UserActivity;
 import ru.ixlax.TodoWebApp.repositories.UserActivityRepository;
 
@@ -14,26 +15,26 @@ import java.util.List;
 public class UserActivityService {
 
     private final UserActivityRepository userActivityRepository;
+    private final UserActivityMapper userActivityMapper;
 
-    public List<UserActivityRequest> getAllUserActivities() {
+    public List<UserActivityResponse> getAllUserActivities() {
 
         List<UserActivity> userActivities = userActivityRepository.findAll();
-
         return mapToDtoList(userActivities);
     }
 
-    private List<UserActivityRequest> mapToDtoList(List<UserActivity> userActivities) {
+    private List<UserActivityResponse> mapToDtoList(List<UserActivity> userActivities) {
 
         if(userActivities.isEmpty()) {
             return new ArrayList<>();
         }
 
         return userActivities.stream()
-                .map(userActivity -> new UserActivityRequest(userActivity.getId(),userActivity.getUserActivity()))
+                .map(userActivityMapper::toUserActivityDTO)
                 .toList();
     }
 
-    public UserActivity getUserActivityById(Integer id) {
+    public UserActivity getUserActivityById(Long id) {
         return userActivityRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid UserActivity ID: " + id));
     }
